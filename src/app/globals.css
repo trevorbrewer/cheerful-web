@@ -3,23 +3,12 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --green:   #2D6A4F;
-    --mint:    #74C69D;
-    --cream:   #F8F4EE;
-    --charcoal:#1C1C1E;
-    --gold:    #E9C46A;
-    --coral:   #E76F51;
-  }
-
   html {
     scroll-behavior: smooth;
   }
-
   h1, h2, h3, h4 {
     font-family: var(--font-display);
   }
-
   body {
     font-family: var(--font-body);
   }
