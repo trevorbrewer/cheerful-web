@@ -16,7 +16,16 @@ export default function LoginPage() {
     if (error) {
       setMessage(error.message);
     } else {
-      window.location.href = "/dashboard";
+      const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+        const { data: profile } = await supabase
+            .from("profiles")
+            .select("onboarding_complete")
+            .eq("id", user.id)
+            .single();
+
+        window.location.href = profile?.onboarding_complete ? "/dashboard" : "/onboarding";
+        }
     }
     setLoading(false);
   }
