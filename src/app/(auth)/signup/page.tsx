@@ -16,7 +16,7 @@ export default function SignUpPage() {
     if (error) {
       setMessage(error.message);
     } else {
-      setMessage("Check your email to confirm your account!");
+      setMessage("Check your email to confirm your account, then log in to continue setup.");
     }
     setLoading(false);
   }
