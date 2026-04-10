@@ -16,37 +16,24 @@ export default function OnboardingPage() {
   const [saving, setSaving] = useState(false);
   const supabase = createClient();
 
-async function handleFinish() {
-  setSaving(true);
+  async function handleFinish() {
+    setSaving(true);
+    const { data: { user } } = await supabase.auth.getUser();
 
-  console.log("Step 1 - fullName:", fullName);
-  console.log("Step 1 - charityId:", charityId);
-  console.log("Step 1 - charityName:", charityName);
+    if (user) {
+      await supabase
+        .from("profiles")
+        .update({
+          full_name: fullName,
+          selected_charity_id: charityId,
+          selected_charity_name: charityName,
+          onboarding_complete: true,
+        })
+        .eq("id", user.id);
+    }
 
-  const { data: { user }, error: userError } = await supabase.auth.getUser();
-
-  console.log("Step 2 - user:", user);
-  console.log("Step 2 - userError:", userError);
-
-  if (user) {
-    const { data, error } = await supabase
-      .from("profiles")
-      .update({
-        full_name: fullName,
-        selected_charity_id: charityId,
-        selected_charity_name: charityName,
-        onboarding_complete: true,
-      })
-      .eq("id", user.id);
-
-    console.log("Step 3 - update data:", data);
-    console.log("Step 3 - update error:", error);
-  } else {
-    console.log("Step 3 - no user found, skipping update");
+    window.location.href = "/dashboard";
   }
-
-  setSaving(false);
-}
 
   return (
     <div className="min-h-screen bg-brand-cream flex items-center justify-center px-6">
