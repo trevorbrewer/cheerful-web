@@ -60,6 +60,24 @@ export default async function DashboardPage() {
           />
         </div>
 
+        {!profile?.card_linked && (
+        <div className="bg-brand-gold/20 border border-brand-gold/40 rounded-2xl p-5 mb-6 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+            <span className="text-2xl">💳</span>
+            <div>
+                <p className="font-body text-sm font-medium text-brand-charcoal">Link your card to start giving</p>
+                <p className="font-body text-xs text-brand-charcoal/50">Connect your bank account to track round-ups</p>
+            </div>
+            </div>
+            
+            <a href="/dashboard/link-card"
+            className="font-body text-sm bg-brand-green text-white px-4 py-2 rounded-xl hover:bg-brand-mint hover:text-brand-charcoal transition-all whitespace-nowrap"
+            >
+            Link card
+            </a>
+        </div>
+        )}
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div className="lg:col-span-2">
             <RecentActivity />
