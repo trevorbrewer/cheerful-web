@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Charity } from "@/lib/everyorg";
 
 interface CharityBrowseCardProps {
@@ -9,11 +10,12 @@ interface CharityBrowseCardProps {
 }
 
 export default function CharityBrowseCard({ charity, onSelect, isSelected }: CharityBrowseCardProps) {
+  const router = useRouter();
+
   return (
-    <button
-      onClick={() => onSelect(charity)}
+    <div
       className={`
-        text-left w-full p-5 rounded-2xl border transition-all
+        text-left w-full p-5 rounded-2xl border transition-all cursor-pointer
         ${isSelected
           ? "border-brand-green bg-brand-mint/10 ring-2 ring-brand-mint/30"
           : "border-brand-mint/20 bg-white hover:border-brand-green"
@@ -55,6 +57,21 @@ export default function CharityBrowseCard({ charity, onSelect, isSelected }: Cha
               ))}
             </div>
           )}
+          <div className="flex items-center gap-3 mt-3">
+            <button
+              onClick={() => onSelect(charity)}
+              className="font-body text-xs text-brand-green hover:underline"
+            >
+              {isSelected ? "✓ Selected" : "Select"}
+            </button>
+            <span className="text-brand-charcoal/20">·</span>
+            <button
+              onClick={() => router.push(`/dashboard/charity/${charity.slug}`)}
+              className="font-body text-xs text-brand-charcoal/40 hover:text-brand-charcoal"
+            >
+              View details
+            </button>
+          </div>
         </div>
         {isSelected && (
           <div className="w-5 h-5 rounded-full bg-brand-green flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -62,6 +79,6 @@ export default function CharityBrowseCard({ charity, onSelect, isSelected }: Cha
           </div>
         )}
       </div>
-    </button>
+    </div>
   );
 }
