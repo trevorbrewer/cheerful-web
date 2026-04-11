@@ -60,3 +60,34 @@ export async function getFeaturedCharities(): Promise<Charity[]> {
       tags: n.tags ?? [],
     }));
 }
+
+export async function getCharityBySlug(slug: string): Promise<Charity | null> {
+  console.log("Fetching slug:", slug);
+  
+  const res = await fetch(
+    `${BASE_URL}/nonprofit/${slug}?apiKey=${API_KEY}`,
+    { next: { revalidate: 3600 } }
+  );
+
+  console.log("Response status:", res.status);
+  console.log("Response ok:", res.ok);
+
+  if (!res.ok) return null;
+
+  const data = await res.json();
+  console.log("Data:", JSON.stringify(data).slice(0, 200));
+  const n = data.data?.nonprofit;
+
+  if (!n) return null;
+
+  return {
+    ein: n.ein ?? n.slug,
+    name: n.name,
+    slug: n.slug,
+    description: n.description ?? null,
+    logoUrl: n.logoUrl ?? null,
+    coverImageUrl: n.coverImageUrl ?? null,
+    websiteUrl: n.websiteUrl ?? null,
+    tags: n.tags ?? [],
+  };
+}
