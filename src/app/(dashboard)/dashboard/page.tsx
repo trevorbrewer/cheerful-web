@@ -20,6 +20,26 @@ export default async function DashboardPage() {
     .eq("id", user.id)
     .single();
 
+  const { data: transactionStats } = await supabase
+  .from("transactions")
+  .select("roundup_amount, donated")
+  .eq("user_id", user.id);
+
+    const totalAllTime = transactionStats
+    ? transactionStats.reduce((sum, t) => sum + Number(t.roundup_amount), 0)
+    : 0;
+
+    const currentMonth = new Date().toISOString().slice(0, 7);
+    const monthlyStats = transactionStats?.filter((t) =>
+    !t.donated
+    ) ?? [];
+
+    const totalThisMonth = monthlyStats.reduce(
+    (sum, t) => sum + Number(t.roundup_amount), 0
+    );
+
+    const roundupCount = monthlyStats.length;
+
   if (!profile?.onboarding_complete) {
     redirect("/onboarding");
   }
@@ -42,22 +62,22 @@ export default async function DashboardPage() {
           <StatCard
             icon="💚"
             label="All time"
-            value="$0.00"
+            value={`$${totalAllTime.toFixed(2)}`}
             sublabel="Total donated to date"
             accent={true}
-          />
-          <StatCard
+            />
+            <StatCard
             icon="📅"
             label="This month"
-            value="$0.00"
-            sublabel="Sends on May 1st"
-          />
-          <StatCard
+            value={`$${totalThisMonth.toFixed(2)}`}
+            sublabel="Sends on the 1st"
+            />
+            <StatCard
             icon="🔁"
             label="Round-ups"
-            value="0"
+            value={roundupCount.toString()}
             sublabel="Transactions this month"
-          />
+            />
         </div>
 
         {!profile?.card_linked && (
