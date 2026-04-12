@@ -100,8 +100,16 @@ export default async function DashboardPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div className="lg:col-span-2">
-            <RecentActivity />
+          <RecentActivity />
+          <div className="mt-3 text-right">
+            
+            <a href="/dashboard/history"
+              className="font-body text-sm text-brand-green hover:underline"
+            >
+              View full history &rarr;
+            </a>
           </div>
+        </div>
           <div>
             <CharityCard
               charityName={profile?.selected_charity_name}
