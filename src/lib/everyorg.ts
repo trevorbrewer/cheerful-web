@@ -62,20 +62,14 @@ export async function getFeaturedCharities(): Promise<Charity[]> {
 }
 
 export async function getCharityBySlug(slug: string): Promise<Charity | null> {
-  console.log("Fetching slug:", slug);
-  
   const res = await fetch(
     `${BASE_URL}/nonprofit/${slug}?apiKey=${API_KEY}`,
     { next: { revalidate: 3600 } }
   );
 
-  console.log("Response status:", res.status);
-  console.log("Response ok:", res.ok);
-
   if (!res.ok) return null;
 
   const data = await res.json();
-  console.log("Data:", JSON.stringify(data).slice(0, 200));
   const n = data.data?.nonprofit;
 
   if (!n) return null;
@@ -90,4 +84,45 @@ export async function getCharityBySlug(slug: string): Promise<Charity | null> {
     websiteUrl: n.websiteUrl ?? null,
     tags: n.tags ?? [],
   };
+}
+
+export async function sendDonation({
+  nonprofitSlug,
+  amountCents,
+  donorName,
+  donorEmail,
+  description,
+}: {
+  nonprofitSlug: string;
+  amountCents: number;
+  donorName: string;
+  donorEmail: string;
+  description: string;
+}): Promise<{ success: boolean; chargeId?: string; error?: string }> {
+  const res = await fetch(
+    `${BASE_URL}/donate`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${API_KEY}`,
+      },
+      body: JSON.stringify({
+        nonprofitSlug,
+        amountCents,
+        donorName,
+        donorEmail,
+        description,
+        partnerDonationId: `cheerful-${Date.now()}`,
+      }),
+    }
+  );
+
+  if (!res.ok) {
+    const error = await res.text();
+    return { success: false, error };
+  }
+
+  const data = await res.json();
+  return { success: true, chargeId: data.chargeId };
 }

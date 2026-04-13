@@ -3,6 +3,10 @@
     {
       "path": "/api/plaid/sync-transactions",
       "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/payout/process-month",
+      "schedule": "0 6 1 * *"
     }
   ]
 }
