@@ -117,6 +117,14 @@ export default async function DashboardPage() {
             />
           </div>
         </div>
+        <form action="/api/payout/test-receipt" method="POST">
+  <button
+    type="submit"
+    className="font-body text-xs text-brand-charcoal/40 hover:text-brand-charcoal"
+  >
+    Send test receipt email
+  </button>
+</form>
       </main>
     </div>
   );
