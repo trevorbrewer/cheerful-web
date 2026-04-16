@@ -8,13 +8,12 @@ export default function Footer() {
           <span className="font-body text-sm text-white/40 ml-4">Make life full.</span>
         </div>
         <div className="flex gap-8">
-          {["Privacy", "Terms", "Security", "Contact"].map((link) => (
-            <a key={link} href="#" className="font-body text-sm text-white/40 hover:text-white transition-colors">
-              {link}
-            </a>
-          ))}
+          <a href="/privacy" className="font-body text-sm text-white/40 hover:text-white transition-colors">Privacy</a>
+          <a href="/terms" className="font-body text-sm text-white/40 hover:text-white transition-colors">Terms</a>
+          <a href="/security" className="font-body text-sm text-white/40 hover:text-white transition-colors">Security</a>
+          <a href="mailto:hello@cheerful.org" className="font-body text-sm text-white/40 hover:text-white transition-colors">Contact</a>
         </div>
-        <p className="font-body text-xs text-white/30">© 2025 Cheerful. A registered 501(c)(3).</p>
+        <p className="font-body text-xs text-white/30">© 2026 Cheerful. A registered 501(c)(3).</p>
       </div>
     </footer>
   );
