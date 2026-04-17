@@ -1,5 +1,5 @@
 const BASE_URL = "https://partners.every.org/v0.2";
-const API_KEY = process.env.NEXT_PUBLIC_EVERY_ORG_API_KEY;
+const API_KEY = process.env.EVERY_ORG_API_KEY;
 
 export interface Charity {
   ein: string;

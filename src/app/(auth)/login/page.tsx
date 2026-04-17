@@ -11,24 +11,38 @@ export default function LoginPage() {
   const supabase = createClient();
 
   async function handleLogin() {
-    setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) {
-      setMessage(error.message);
-    } else {
-      const { data: { user } } = await supabase.auth.getUser();
-        if (user) {
-        const { data: profile } = await supabase
-            .from("profiles")
-            .select("onboarding_complete")
-            .eq("id", user.id)
-            .single();
+  const sanitizedEmail = email.trim().toLowerCase();
+  const sanitizedPassword = password.trim();
 
-        window.location.href = profile?.onboarding_complete ? "/dashboard" : "/onboarding";
-        }
-    }
-    setLoading(false);
+  if (!sanitizedEmail || !sanitizedEmail.includes("@")) {
+    setMessage("Please enter a valid email address.");
+    return;
   }
+
+  setLoading(true);
+  const { error } = await supabase.auth.signInWithPassword({
+    email: sanitizedEmail,
+    password: sanitizedPassword,
+  });
+
+  if (error) {
+    setMessage(error.message);
+  } else {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (user) {
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("onboarding_complete")
+        .eq("id", user.id)
+        .single();
+
+      window.location.href = profile?.onboarding_complete
+        ? "/dashboard"
+        : "/onboarding";
+    }
+  }
+  setLoading(false);
+}
 
   return (
     <div className="min-h-screen bg-brand-cream flex items-center justify-center px-6">
