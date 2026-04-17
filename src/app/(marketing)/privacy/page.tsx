@@ -1,4 +1,10 @@
 import LegalLayout from "@/components/layout/LegalLayout";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy — Cheerful",
+  description: "How Cheerful collects, uses, and protects your information.",
+};
 
 export default function PrivacyPage() {
   return (

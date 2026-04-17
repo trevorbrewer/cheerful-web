@@ -1,4 +1,10 @@
 import LegalLayout from "@/components/layout/LegalLayout";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Security — Cheerful",
+  description: "How Cheerful protects your financial data and personal information.",
+};
 
 const SECURITY_ITEMS = [
   {

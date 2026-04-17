@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
+import { posthog } from "@/lib/posthog";
 import Button from "@/components/ui/Button";
 
 export default function SignUpPage() {
@@ -11,32 +12,33 @@ export default function SignUpPage() {
   const supabase = createClient();
 
   async function handleSignUp() {
-  const sanitizedEmail = email.trim().toLowerCase();
-  const sanitizedPassword = password.trim();
+    const sanitizedEmail = email.trim().toLowerCase();
+    const sanitizedPassword = password.trim();
 
-  if (!sanitizedEmail || !sanitizedEmail.includes("@")) {
-    setMessage("Please enter a valid email address.");
-    return;
+    if (!sanitizedEmail || !sanitizedEmail.includes("@")) {
+      setMessage("Please enter a valid email address.");
+      return;
+    }
+
+    if (sanitizedPassword.length < 8) {
+      setMessage("Password must be at least 8 characters.");
+      return;
+    }
+
+    setLoading(true);
+    const { error } = await supabase.auth.signUp({
+      email: sanitizedEmail,
+      password: sanitizedPassword,
+    });
+
+    if (error) {
+      setMessage(error.message);
+    } else {
+      posthog.capture("user_signed_up", { email: sanitizedEmail });
+      setMessage("Check your email to confirm your account, then log in to continue setup.");
+    }
+    setLoading(false);
   }
-
-  if (sanitizedPassword.length < 8) {
-    setMessage("Password must be at least 8 characters.");
-    return;
-  }
-
-  setLoading(true);
-  const { error } = await supabase.auth.signUp({
-    email: sanitizedEmail,
-    password: sanitizedPassword,
-  });
-
-  if (error) {
-    setMessage(error.message);
-  } else {
-    setMessage("Check your email to confirm your account, then log in to continue setup.");
-  }
-  setLoading(false);
-}
 
   return (
     <div className="min-h-screen bg-brand-cream flex items-center justify-center px-6">
