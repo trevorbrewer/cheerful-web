@@ -63,7 +63,7 @@ export default function CharityGrid({ charities, currentCharityId }: CharityGrid
       </div>
 
       {selectedId && selectedName && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white rounded-2xl shadow-lg border border-brand-mint/30 px-6 py-4 flex items-center gap-6 z-50">
+        <div className="fixed bottom-4 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:w-auto bg-white rounded-2xl shadow-lg border border-brand-mint/30 px-6 py-4 flex items-center justify-between gap-6 z-50">
           <div>
             <p className="font-body text-xs text-brand-charcoal/50">Selected charity</p>
             <p className="font-body text-sm font-medium text-brand-charcoal">{selectedName}</p>

@@ -18,7 +18,7 @@ export default function RoundupSummary({
   charityName,
 }: RoundupSummaryProps) {
   return (
-    <div className="bg-white rounded-2xl p-6 mb-6">
+    <div className="bg-white rounded-2xl p-4 md:p-6 mb-6">
       <div className="flex items-center justify-between mb-6">
         <h3 className="font-display text-lg text-brand-charcoal">Monthly summary</h3>
         <span className={`

@@ -32,7 +32,7 @@ export default function Hero() {
             </Button>
           </div>
 
-          <div className="flex items-center gap-8 pt-8 border-t border-brand-mint/30">
+          <div className="flex flex-wrap items-center gap-6 pt-8 border-t border-brand-mint/30">
             <Stat number="$0" label="to get started" />
             <Stat number="1.5M+" label="nonprofits to choose from" />
             <Stat number="92%" label="of every round-up donated" />
