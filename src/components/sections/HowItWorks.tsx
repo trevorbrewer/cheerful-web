@@ -47,7 +47,7 @@ export default function HowItWorks() {
           ))}
         </div>
 
-        <div className="mt-16 p-8 bg-brand-cream rounded-2xl">
+        <div className="mt-16 p-6 md:p-8 bg-brand-cream rounded-2xl">
         <p className="font-display text-2xl text-brand-charcoal mb-2">
             "A $4.37 coffee. A $12.84 grocery run. A $67.50 tank of gas."
         </p>
