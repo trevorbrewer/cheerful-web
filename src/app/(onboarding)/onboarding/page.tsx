@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
+import { posthog } from "@/lib/posthog";
 import StepIndicator from "@/components/ui/StepIndicator";
 import StepName from "@/components/onboarding/StepName";
 import StepCharity from "@/components/onboarding/StepCharity";
@@ -30,6 +31,11 @@ export default function OnboardingPage() {
           onboarding_complete: true,
         })
         .eq("id", user.id);
+
+      posthog.capture("onboarding_completed", {
+        charity_id: charityId,
+        charity_name: charityName,
+      });
     }
 
     window.location.href = "/dashboard";

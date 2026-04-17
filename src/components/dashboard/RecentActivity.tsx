@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { formatCurrency } from "@/lib/roundup";
+import { posthog } from "@/lib/posthog";
 
 interface Transaction {
   id: string;
@@ -43,6 +44,7 @@ export default function RecentActivity() {
     try {
       await fetch("/api/plaid/sync-now", { method: "POST" });
       await fetchTransactions();
+      posthog.capture("transactions_synced");
     } catch (error) {
       console.error("Sync failed:", error);
     }
