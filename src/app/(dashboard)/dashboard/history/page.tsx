@@ -56,8 +56,8 @@ export default async function HistoryPage({ searchParams }: PageProps) {
 
   const txList = transactions ?? [];
   const totalRoundup = txList.reduce((sum, t) => sum + Number(t.roundup_amount), 0);
-  const cheerfulFee = parseFloat((totalRoundup * 0.08).toFixed(2));
-  const charityAmount = parseFloat((totalRoundup - cheerfulFee).toFixed(2));
+  const cheerfulFee = 0;
+  const charityAmount = parseFloat(totalRoundup.toFixed(2));
   const allDonated = txList.length > 0 && txList.every((t) => t.donated);
 
   return (
@@ -86,7 +86,6 @@ export default async function HistoryPage({ searchParams }: PageProps) {
           <>
             <RoundupSummary
               totalRoundup={totalRoundup}
-              cheerfulFee={cheerfulFee}
               charityAmount={charityAmount}
               transactionCount={txList.length}
               donated={allDonated}

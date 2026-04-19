@@ -97,7 +97,7 @@ export default async function AdminPage() {
             icon="💚"
             label="Total donated"
             value={`$${totalDonated.toFixed(2)}`}
-            sublabel={`$${totalFees.toFixed(2)} in fees collected`}
+            sublabel="100% goes to charity"
             accent="green"
           />
           <AdminStatCard

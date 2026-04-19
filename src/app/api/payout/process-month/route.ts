@@ -58,8 +58,8 @@ export async function POST(request: Request) {
 
         if (totalRoundup < 0.50) continue;
 
-        const cheerfulFee = parseFloat((totalRoundup * 0.08).toFixed(2));
-        const charityAmount = parseFloat((totalRoundup - cheerfulFee).toFixed(2));
+        const cheerfulFee = 0;
+        const charityAmount = parseFloat(totalRoundup.toFixed(2));
         const amountCents = Math.round(charityAmount * 100);
 
         const { data: userRecord } = await supabase.auth.admin.getUserById(profile.id);

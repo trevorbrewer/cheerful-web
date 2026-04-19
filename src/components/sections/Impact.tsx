@@ -52,8 +52,8 @@ export default function Impact() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-16">
           {[
-            { value: "92%", label: "of every round-up goes to your charity" },
-            { value: "8%", label: "covers our operating costs" },
+            { value: "100%", label: "of every round-up goes to your charity" },
+            { value: "0%", label: "in fees — ever" },
             { value: "501(c)(3)", label: "registered nonprofit" },
           ].map((item) => (
             <div key={item.label} className="bg-white/10 rounded-2xl p-6">

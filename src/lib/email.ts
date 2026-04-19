@@ -73,12 +73,6 @@ export async function sendDonationReceipt({
                       ${formatter.format(totalRoundup)}
                     </td>
                   </tr>
-                  <tr>
-                    <td style="color: #666; padding: 6px 0;">Cheerful fee (8%)</td>
-                    <td style="text-align: right; color: #666; padding: 6px 0;">
-                      -${formatter.format(cheerfulFee)}
-                    </td>
-                  </tr>
                   <tr style="border-top: 1px solid #E0DDD6;">
                     <td style="color: #1C1C1E; font-weight: bold; padding: 12px 0 6px;">
                       Donated to ${charityName}

@@ -2,7 +2,6 @@ import { formatCurrency } from "@/lib/roundup";
 
 interface RoundupSummaryProps {
   totalRoundup: number;
-  cheerfulFee: number;
   charityAmount: number;
   transactionCount: number;
   donated: boolean;
@@ -11,7 +10,6 @@ interface RoundupSummaryProps {
 
 export default function RoundupSummary({
   totalRoundup,
-  cheerfulFee,
   charityAmount,
   transactionCount,
   donated,
@@ -39,14 +37,6 @@ export default function RoundupSummary({
           </p>
           <p className="font-body text-sm font-medium text-brand-charcoal">
             {formatCurrency(totalRoundup)}
-          </p>
-        </div>
-        <div className="flex items-center justify-between py-2 border-b border-brand-cream">
-          <p className="font-body text-sm text-brand-charcoal/60">
-            Cheerful fee (8%)
-          </p>
-          <p className="font-body text-sm text-brand-charcoal/60">
-            -{formatCurrency(cheerfulFee)}
           </p>
         </div>
         <div className="flex items-center justify-between py-2">

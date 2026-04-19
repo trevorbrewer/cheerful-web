@@ -21,7 +21,7 @@ export default function CharityCard({ charityName, charityId }: CharityCardProps
           <div>
             <p className="font-body text-sm font-medium text-brand-charcoal">{charityName}</p>
             <p className="font-body text-xs text-brand-charcoal/50 mt-0.5">
-              92% of your round-ups go here
+              100% of your round-ups go here
             </p>
           </div>
         </div>

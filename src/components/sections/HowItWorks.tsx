@@ -52,7 +52,7 @@ export default function HowItWorks() {
             "A $4.37 coffee. A $12.84 grocery run. A $67.50 tank of gas."
         </p>
         <p className="font-body text-brand-charcoal/60">
-            Those round-ups add up to <span className="text-brand-green font-medium">$18–$35/month</span> for the average Cheerful user. We retain 8% to keep the lights on — the rest goes directly to your cause.
+            Those round-ups add up to <span className="text-brand-green font-medium">$18–$35/month</span> for the average Cheerful user. Every cent goes directly to your cause — we take nothing.
         </p>
         </div>
       </div>

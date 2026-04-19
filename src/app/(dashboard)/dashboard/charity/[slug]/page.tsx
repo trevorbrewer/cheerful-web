@@ -101,7 +101,7 @@ export default async function CharityDetailPage({ params }: PageProps) {
               </div>
               <div>
                 <p className="font-body text-xs text-brand-charcoal/50 mb-1">Your contribution</p>
-                <p className="font-body text-sm font-medium text-brand-green">92% of round-ups</p>
+                <p className="font-body text-sm font-medium text-brand-green">100% of round-ups</p>
               </div>
               <div>
                 <p className="font-body text-xs text-brand-charcoal/50 mb-1">Website</p>

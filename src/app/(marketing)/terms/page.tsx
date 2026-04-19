@@ -39,18 +39,18 @@ export default function TermsPage() {
             the next whole dollar. These round-ups accumulate throughout the month.
           </p>
           <p>
-            On the 1st of each month, 92% of your accumulated round-ups are sent to
-            your chosen charity via Every.org. Cheerful retains 8% to cover operating
-            costs including payment processing, platform maintenance, and compliance.
+            On the 1st of each month, 100% of your accumulated round-ups are sent to
+            your chosen charity via Every.org. Cheerful takes no fees — your full
+            round-up goes directly to your cause.
           </p>
         </section>
 
         <section>
           <h2 className="font-display text-2xl text-brand-charcoal mb-3">Fees</h2>
           <p>
-            Cheerful retains 8% of each monthly round-up total to cover operating
-            expenses. There are no other fees. We will always be transparent about
-            our fee structure.
+            Cheerful charges no fees. 100% of your round-ups go directly to your
+            chosen charity. Cheerful is funded through grants and donations, not
+            through user fees.
           </p>
         </section>
 
