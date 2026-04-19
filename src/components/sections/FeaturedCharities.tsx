@@ -18,9 +18,11 @@ export default function FeaturedCharities() {
               Your spare change,<br />their big mission.
             </h2>
           </div>
-          <button className="font-body text-sm text-brand-green border border-brand-green rounded-xl px-6 py-3 hover:bg-brand-green hover:text-white transition-all self-start md:self-auto">
+          <a href="/signup"
+            className="font-body text-sm text-brand-green border border-brand-green rounded-xl px-6 py-3 hover:bg-brand-green hover:text-white transition-all self-start md:self-auto"
+          >
             Browse all 1.5M+ charities →
-          </button>
+          </a>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

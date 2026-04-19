@@ -24,12 +24,16 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-16">
-            <Button variant="primary" className="text-base px-8 py-4">
-              Start giving for free
-            </Button>
-            <Button variant="ghost" className="text-base px-8 py-4">
-              Explore charities →
-            </Button>
+            <a href="/signup">
+              <Button variant="primary" className="text-base px-8 py-4">
+                Start giving for free
+              </Button>
+            </a>
+            <a href="/signup">
+              <Button variant="ghost" className="text-base px-8 py-4">
+                Explore charities →
+              </Button>
+            </a>
           </div>
 
           <div className="flex flex-wrap items-center gap-6 pt-8 border-t border-brand-mint/30">
