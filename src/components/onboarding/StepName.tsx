@@ -24,7 +24,7 @@ export default function StepName({ value, onChange, onNext }: StepNameProps) {
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          placeholder="Trevor Brewer"
+          placeholder="Full Name"
           className="w-full border border-brand-mint/40 rounded-xl px-4 py-3 font-body text-sm outline-none focus:border-brand-green"
           autoFocus
         />
